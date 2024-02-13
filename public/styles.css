@@ -3,25 +3,25 @@
 }
 
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 body {
-    background-color: #0b0c10;
-    font-family: 'Your Body Font', sans-serif;
-    color: #8e99a7;
-    text-align: center;
-    position: relative;
-    background-attachment: fixed;
+  background-color: #0b0c10;
+  font-family: 'Your Body Font', sans-serif;
+  color: #8e99a7;
+  text-align: center;
+  position: relative;
+  background-attachment: fixed;
 }
 
 #loading-image {
-    width: 100px; /* Set an appropriate size for your loading image */
-    height: auto; /* Maintain aspect ratio */
-    animation: spin 2s linear infinite; /* Re-use the spin animation if desired */
+  width: 100px;
+  height: auto;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
@@ -34,77 +34,71 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2; /* Ensure it's above other content */
+  z-index: 2;
 }
 
 #loading-text {
-    color: #57f287; /* Portal Green for text */
-    font-family: 'Roboto Condensed', sans-serif;
-    margin-top: 1em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #57f287;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin-top: 1em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0px rgba(87, 242, 135, 0.1);
-  }
-  70% {
-    box-shadow: 0 0 0 5px rgba(87, 242, 135, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0px rgba(87, 242, 135, 0);
-  }
+  0% { box-shadow: 0 0 0 0px rgba(87, 242, 135, 0.1); }
+  70% { box-shadow: 0 0 0 5px rgba(87, 242, 135, 0); }
+  100% { box-shadow: 0 0 0 0px rgba(87, 242, 135, 0); }
 }
 
 #character {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    color: #f3e033;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 2em;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    animation: pulse 2s infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: #f3e033;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
 }
 
 #character h1 {
-    font-size: 2.5rem;
-    color: #57f287;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 2.5rem;
+  color: #57f287;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #character p {
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 2px black;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px black;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Your Heading Font', sans-serif;
+  font-family: 'Your Heading Font', sans-serif;
 }
 
 img {
-    border-radius: 50%;
-    border: 4px solid #57f287;
+  border-radius: 50%;
+  border: 4px solid #57f287;
 }
 
 #refresh-button {
-    font-family: 'Roboto Condensed', sans-serif;
-    background-color: #57f287; /* Portal Green */
-    color: #0b0c10; /* Space Black */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: #57f287;
+  color: #0b0c10;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
 }
 
 #refresh-button:hover {
-    background-color: #44a259; /* A darker shade for hover */
+  background-color: #44a259;
 }
 
 #starfield {
@@ -113,19 +107,19 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Behind other content */
+  z-index: -1;
 }
 
 .star {
-    width: 2px;
-    height: 2px;
-    background: linear-gradient(45deg, #57f287, #f3e033);
-    position: absolute;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 
-        0 0 2px #57f287,
-        0 0 4px #57f287,
-        0 0 8px #57f287,
-        0 0 12px #57f287;
+  width: 2px;
+  height: 2px;
+  background: linear-gradient(45deg, #57f287, #f3e033);
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 
+    0 0 2px #57f287,
+    0 0 4px #57f287,
+    0 0 8px #57f287,
+    0 0 12px #57f287;
 }
