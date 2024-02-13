@@ -75,6 +75,31 @@ body {
   text-shadow: 1px 1px 2px black;
 }
 
+#character ul {
+  list-style-type: disc;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#character li {
+  margin: 0.5em 0;
+  padding-bottom: 10px;
+}
+
+
+#character li::before {
+  content: '•';
+  color: #57f287;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
@@ -95,6 +120,8 @@ img {
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.3s;
+  position: relative;
+  z-index: 10;
 }
 
 #refresh-button:hover {
@@ -122,4 +149,29 @@ img {
     0 0 4px #57f287,
     0 0 8px #57f287,
     0 0 12px #57f287;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #c5c6c728;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.8em;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #57f28830;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
