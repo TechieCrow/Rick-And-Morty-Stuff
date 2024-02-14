@@ -107,6 +107,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.getElementById('location-button').addEventListener('click', fetchLocation);
 
+function fetchEpisode() {
+  loadingDiv.classList.remove('hidden');
+  characterDiv.classList.add('hidden');
+  changeLoadingMessage();
+
+  fetch('/api/episode')
+    .then(response => response.json())
+    .then(episode => {
+      characterDiv.innerHTML = `
+        <h1>Random Episode</h1>
+        <p><strong>Name:</strong> ${episode.name}</p>
+        <p><strong>Air Date:</strong> ${episode.air_date}</p>
+        <p><strong>Episode:</strong> ${episode.episode}</p>
+        <h2>Characters</h2>
+        <ul>
+          ${episode.characterNames.map(name => `<li>${name}</li>`).join('')}
+        </ul>
+      `;
+      loadingDiv.classList.add('hidden');
+      characterDiv.classList.remove('hidden');
+    })
+        .catch(error => {
+      console.error('Error fetching episode:', error);
+      loadingDiv.classList.add('hidden');
+      characterDiv.innerHTML = `<p>Failed to load episode. Please try again.</p>`;
+      characterDiv.classList.remove('hidden');
+    });
+}
+
+document.getElementById('episode-button').addEventListener('click', fetchEpisode);
+
     function createStarField() {
     const starField = document.getElementById('starfield');
     starField.innerHTML = '';

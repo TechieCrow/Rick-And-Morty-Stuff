@@ -129,7 +129,7 @@ img {
   border: 4px solid #57f287;
 }
 
-#refresh-button, #location-button {
+#refresh-button, #location-button, #episode-button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   background-color: #57f287;
   color: #0b0c10;
@@ -144,7 +144,7 @@ img {
   z-index: 10;
 }
 
-#refresh-button:hover, #location-button:hover {
+#refresh-button:hover, #location-button:hover, #episode-button:hover {
   background-color: #44a259;
 }
 

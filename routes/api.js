@@ -38,7 +38,7 @@ router.get('/character', async (req, res) => {
 
 router.get('/location', async (req, res) => {
   try {
-    const locationId = Math.floor(Math.random() * 108) + 1;
+    const locationId = Math.floor(Math.random() * 126) + 1;
     const locationResponse = await fetch(`https://rickandmortyapi.com/api/location/${locationId}`);
     const location = await locationResponse.json();
 
@@ -60,5 +60,27 @@ router.get('/location', async (req, res) => {
   }
 });
 
+router.get('/episode', async (req, res) => {
+  try {
+    const episodeId = Math.floor(Math.random() * 51) + 1; // Adjust if more episodes are added
+    const episodeResponse = await fetch(`https://rickandmortyapi.com/api/episode/${episodeId}`);
+    const episode = await episodeResponse.json();
+
+    const charactersPromise = episode.characters.map(async (characterUrl) => {
+      const characterResponse = await fetch(characterUrl);
+      return characterResponse.json();
+    });
+
+    const characters = await Promise.all(charactersPromise);
+    const characterNames = characters.map(character => character.name);
+
+    const episodeWithCharacters = { ...episode, characterNames };
+
+    res.json(episodeWithCharacters);
+  } catch (error) {
+    console.error('Error fetching episode:', error);
+    res.status(500).send('An error occurred while fetching a random episode.');
+  }
+});
 
 module.exports = router;
