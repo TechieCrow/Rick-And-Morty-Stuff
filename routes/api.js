@@ -42,14 +42,11 @@ router.get('/location', async (req, res) => {
     const locationResponse = await fetch(`https://rickandmortyapi.com/api/location/${locationId}`);
     const location = await locationResponse.json();
 
-    // Fetch residents' details if they exist
     if (location.residents.length > 0) {
       const residentsPromises = location.residents.map(url => fetch(url).then(res => res.json()));
       const residents = await Promise.all(residentsPromises);
-      // Map the full resident data to just the names, if needed
       location.residentNames = residents.map(resident => resident.name);
     } else {
-      // Handle case with no residents
       location.residentNames = ['No known residents'];
     }
 
@@ -62,7 +59,7 @@ router.get('/location', async (req, res) => {
 
 router.get('/episode', async (req, res) => {
   try {
-    const episodeId = Math.floor(Math.random() * 51) + 1; // Adjust if more episodes are added
+    const episodeId = Math.floor(Math.random() * 51) + 1;
     const episodeResponse = await fetch(`https://rickandmortyapi.com/api/episode/${episodeId}`);
     const episode = await episodeResponse.json();
 

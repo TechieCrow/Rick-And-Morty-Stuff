@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   characterDiv.classList.add('hidden');
   changeLoadingMessage();
 
-  fetch('/api/location') // Assuming you have a route set up for this
+  fetch('/api/location')
     .then(response => response.json())
     .then(location => {
       let residentsHtml = '<ul>';
