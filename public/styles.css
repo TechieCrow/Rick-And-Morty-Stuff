@@ -51,17 +51,24 @@ body {
 }
 
 #character {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
   color: #f3e033;
   background: rgba(0, 0, 0, 0.8);
-  padding: 2em;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   animation: pulse 2s infinite;
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 1em;
+  width: 90%;
+  max-height: 80vh;
+  margin-top: -8vh;
+  margin-bottom: 0vh;
+  overflow-y: auto;
+  position: relative;
 }
 
 #character h1 {
@@ -174,4 +181,23 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 3px solid rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.2);
 }
