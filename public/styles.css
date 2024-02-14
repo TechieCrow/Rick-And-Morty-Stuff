@@ -25,8 +25,13 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 #loading {
@@ -45,9 +50,17 @@ body {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0px rgba(87, 242, 135, 0.1); }
-  70% { box-shadow: 0 0 0 5px rgba(87, 242, 135, 0); }
-  100% { box-shadow: 0 0 0 0px rgba(87, 242, 135, 0); }
+  0% {
+    box-shadow: 0 0 0 0px rgba(87, 242, 135, 0.1);
+  }
+
+  70% {
+    box-shadow: 0 0 0 5px rgba(87, 242, 135, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0px rgba(87, 242, 135, 0);
+  }
 }
 
 #character {
@@ -151,7 +164,7 @@ img {
   position: absolute;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     0 0 2px #57f287,
     0 0 4px #57f287,
     0 0 8px #57f287,
@@ -159,28 +172,28 @@ img {
 }
 
 footer {
-    text-align: center;
-    padding: 1em;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: #c5c6c728;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 0.8em;
+  text-align: center;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #c5c6c728;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.8em;
 }
 
 footer p {
-    margin: 0;
+  margin: 0;
 }
 
 footer a {
-    color: #57f28830;
-    text-decoration: none;
+  color: #57f28830;
+  text-decoration: none;
 }
 
 footer a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 ::-webkit-scrollbar-track {
