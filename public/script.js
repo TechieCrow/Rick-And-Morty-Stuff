@@ -68,6 +68,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('refresh-button').addEventListener('click', fetchCharacter);
 
+    function fetchLocation() {
+  loadingDiv.classList.remove('hidden');
+  characterDiv.classList.add('hidden');
+  changeLoadingMessage();
+
+  fetch('/api/location') // Assuming you have a route set up for this
+    .then(response => response.json())
+    .then(location => {
+      let residentsHtml = '<ul>';
+      if (location.residentNames && location.residentNames.length > 0) {
+        location.residentNames.forEach(residentName => {
+          residentsHtml += `<li>${residentName}</li>`;
+        });
+      } else {
+        residentsHtml += '<li>No known residents</li>';
+      }
+      residentsHtml += '</ul>';
+
+      characterDiv.innerHTML = `
+        <h1>Random Location</h1>
+        <p><strong>Name:</strong> ${location.name}</p>
+        <p><strong>Type:</strong> ${location.type}</p>
+        <p><strong>Dimension:</strong> ${location.dimension}</p>
+        <h2>Residents</h2>
+        ${residentsHtml}
+      `;
+      loadingDiv.classList.add('hidden');
+      characterDiv.classList.remove('hidden');
+    })
+    .catch(error => {
+      console.error('Error fetching location:', error);
+      loadingDiv.classList.add('hidden');
+      characterDiv.innerHTML = `<p>Failed to load location. Please try again.</p>`;
+      characterDiv.classList.remove('hidden');
+    });
+}
+
+document.getElementById('location-button').addEventListener('click', fetchLocation);
+
     function createStarField() {
     const starField = document.getElementById('starfield');
     starField.innerHTML = '';
