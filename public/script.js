@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p><strong>Name:</strong> ${location.name}</p>
         <p><strong>Type:</strong> ${location.type}</p>
         <p><strong>Dimension:</strong> ${location.dimension}</p>
+        <hr>
         <h2>Residents</h2>
         ${residentsHtml}
       `;
@@ -120,6 +121,7 @@ function fetchEpisode() {
         <p><strong>Name:</strong> ${episode.name}</p>
         <p><strong>Air Date:</strong> ${episode.air_date}</p>
         <p><strong>Episode:</strong> ${episode.episode}</p>
+        <hr>
         <h2>Characters</h2>
         <ul>
           ${episode.characterNames.map(name => `<li>${name}</li>`).join('')}
