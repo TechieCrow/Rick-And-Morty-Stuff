@@ -136,7 +136,7 @@ img {
   background-color: #57f287;
   color: #0b0c10;
   border: 2px solid #45a29e;
-  padding: 0.5em 1em;
+  padding: 0.7em 1em;
   border-radius: 20px;
   outline: none;
   margin-top: 2em;
@@ -155,15 +155,7 @@ img {
 }
 
 #submit-button {
-  background-color: #57f287;
-  color: #0b0c10;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: all 0.3s ease-in-out;
+  padding: 0.8em 2.3em;
 }
 
 #submit-button:hover {
