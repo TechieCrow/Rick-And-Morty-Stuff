@@ -24,9 +24,14 @@
             <div class="loader"></div>
             <p id="loading-text">Loading new universe...</p>
         </div>
-        <button id="refresh-button">Random Character</button>
-        <button id="location-button">Random Location</button>
-        <button id="episode-button">Random Episode</button>
+        <h1>Random Rick and Morty Stuff</h1>
+        <select id="selection-dropdown">
+            <option value="character">Character</option>
+            <option value="location">Location</option>
+            <option value="episode">Episode</option>
+        </select>
+        <button id="submit-button">Submit</button>
+
         <div id="character"></div>
         <div id="ko-fi">
             <script
@@ -49,5 +54,6 @@
                 respective owners.</p>
         </footer>
         <script src="/script.js"></script>
+        <script src="/starfield.js"></script>
     </body>
 </html>

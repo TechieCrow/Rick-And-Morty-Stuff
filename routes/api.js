@@ -10,30 +10,33 @@ let fetch;
 })();
 
 router.get('/character', async (req, res) => {
-    try {
-        const characterId = Math.floor(Math.random() * 826) + 1;
-        const characterResponse = await fetch(`https://rickandmortyapi.com/api/character/${characterId}`);
-        const character = await characterResponse.json();
+  try {
+    const characterId = Math.floor(Math.random() * 826) + 1;
+    const characterResponse = await fetch(`https://rickandmortyapi.com/api/character/${characterId}`);
+    const character = await characterResponse.json();
 
-        const locationResponse = await fetch(character.location.url);
-        const location = await locationResponse.json();
-        character.locationName = location.name;
-
-        const episodesPromise = character.episode.map(async (episodeUrl) => {
-            const episodeResponse = await fetch(episodeUrl);
-            return episodeResponse.json();
-        });
-        const episodes = await Promise.all(episodesPromise);
-
-        const episodeNames = episodes.map(episode => episode.name);
-
-        const characterWithEpisodes = { ...character, episodes: episodeNames };
-
-        res.json(characterWithEpisodes);
-    } catch (error) {
-        console.error('Error fetching character:', error);
-        res.status(500).send('An error occurred while fetching a random character.');
+    // Check if the character has a known location or not
+    if (character.location.url) {
+      const locationResponse = await fetch(character.location.url);
+      const location = await locationResponse.json();
+      character.locationName = location.name;
+    } else {
+      character.locationName = 'Unknown Location';
     }
+
+    if (character.episode.length > 0) {
+      const episodesPromise = character.episode.map(episodeUrl => fetch(episodeUrl).then(res => res.json()));
+      const episodes = await Promise.all(episodesPromise);
+      character.episodes = episodes.map(episode => episode.name);
+    } else {
+      character.episodes = ['No known episodes'];
+    }
+
+    res.json(character);
+  } catch (error) {
+    console.error('Error fetching character:', error);
+    res.status(500).send('An error occurred while fetching a random character.');
+  }
 });
 
 router.get('/location', async (req, res) => {
@@ -63,17 +66,15 @@ router.get('/episode', async (req, res) => {
     const episodeResponse = await fetch(`https://rickandmortyapi.com/api/episode/${episodeId}`);
     const episode = await episodeResponse.json();
 
-    const charactersPromise = episode.characters.map(async (characterUrl) => {
-      const characterResponse = await fetch(characterUrl);
-      return characterResponse.json();
-    });
+    if (episode.characters.length > 0) {
+      const charactersPromise = episode.characters.map(characterUrl => fetch(characterUrl).then(res => res.json()));
+      const characters = await Promise.all(charactersPromise);
+      episode.characterNames = characters.map(character => character.name);
+    } else {
+      episode.characterNames = ['No known characters'];
+    }
 
-    const characters = await Promise.all(charactersPromise);
-    const characterNames = characters.map(character => character.name);
-
-    const episodeWithCharacters = { ...episode, characterNames };
-
-    res.json(episodeWithCharacters);
+    res.json(episode);
   } catch (error) {
     console.error('Error fetching episode:', error);
     res.status(500).send('An error occurred while fetching a random episode.');
